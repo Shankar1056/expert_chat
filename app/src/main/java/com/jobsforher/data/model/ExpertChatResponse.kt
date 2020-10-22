@@ -1,14 +1,21 @@
 package com.jobsforher.data.model
 
+import com.bigappcompany.healthtunnel.data.network.ApiCallback
+import com.bigappcompany.healthtunnel.data.repository.ApiServices
+import com.bigappcompany.healthtunnel.data.repository.RetroClient
+import com.jobsforher.data.network.BackoffCallback
+import retrofit2.Response
+
 data class ExpertChatResponse(
-    var status: String,
-    var response_code: Int,
-    var auth: ExpertChatAuth,
-    var body: ArrayList<ExpertCharBody>,
+    var status: String? = null,
+    var response_code: Int? = null,
+    var auth: ExpertChatAuth? = null,
+    var body: ArrayList<ExpertChatBody>? = null,
 
     )
 
-data class ExpertCharBody(
+
+data class ExpertChatBody(
     var id: Int? = null,
     var title: String? = null,
     var date: String? = null,
@@ -20,9 +27,9 @@ data class ExpertCharBody(
     var post_id: Int? = null,
     var description: String? = null,
     var created_by: Int? = null,
-    var created_on: Int? = null,
-    var modified_on: Int? = null,
-    var group_name: Int? = null,
+    var created_on: String? = null,
+    var modified_on: String? = null,
+    var group_name: String? = null,
 )
 
 class ExpertChatAuth {

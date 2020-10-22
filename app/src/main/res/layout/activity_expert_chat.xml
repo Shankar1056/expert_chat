@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -20,7 +21,9 @@
             <ImageView
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 android:background="@drawable/expert_chat_banner"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +89,17 @@
                 android:textColor="@color/color_light_blue"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/group_icon"
+                app:layout_constraintTop_toBottomOf="@+id/heading1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:text="@string/now"
+                android:textColor="@color/text_black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/expert_chat"
                 app:layout_constraintTop_toBottomOf="@+id/heading1" />
 
             <androidx.cardview.widget.CardView
@@ -155,6 +169,8 @@
                         android:layout_height="40dp"
                         android:drawableRight="@drawable/ic_down_arrow"
                         android:drawablePadding="10dp"
+                        android:onClick="@{viewmodel::onMonthClicked}"
+                        android:text="@{viewmodel.selectedMonth}"
                         app:layout_constraintEnd_toEndOf="@+id/month"
                         app:layout_constraintStart_toStartOf="@+id/month"
                         app:layout_constraintTop_toBottomOf="@+id/month" />
@@ -173,6 +189,8 @@
                         android:layout_height="40dp"
                         android:drawableRight="@drawable/ic_down_arrow"
                         android:drawablePadding="10dp"
+                        android:onClick="@{viewmodel::onYearClicked}"
+                        android:text="@{viewmodel.selectedYear}"
                         app:layout_constraintEnd_toEndOf="@+id/year"
                         app:layout_constraintStart_toStartOf="@+id/year"
                         app:layout_constraintTop_toBottomOf="@+id/year" />
@@ -189,7 +207,7 @@
                     <Button
                         android:id="@+id/buttonGo"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:background="@drawable/curved_green"
                         android:text="@string/title_go"
                         android:textAllCaps="true"
@@ -212,18 +230,24 @@
                 android:text="@{@string/title_expert_chat_calendar + viewmodel.selectedMonth }"
                 android:textColor="@color/text_black"
                 android:textSize="16sp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="@+id/topCV"
                 app:layout_constraintTop_toBottomOf="@+id/topCV" />
 
             <HorizontalScrollView
+                android:id="@+id/hv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:scrollbars="none"
                 app:layout_constraintStart_toStartOf="@+id/monthName"
                 app:layout_constraintTop_toBottomOf="@+id/monthName">
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp">
+                    android:layout_marginStart="15dp"
+                    android:paddingEnd="30dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/week1CL"
@@ -272,7 +296,7 @@
                         android:paddingBottom="8dp"
                         android:paddingEnd="15dp"
                         android:paddingStart="15dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/week1CL">
 
@@ -308,7 +332,7 @@
                         android:paddingBottom="8dp"
                         android:paddingEnd="15dp"
                         android:paddingStart="15dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/week2CL">
 
@@ -344,7 +368,7 @@
                         android:paddingBottom="8dp"
                         android:paddingEnd="15dp"
                         android:paddingStart="15dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         app:layout_constraintStart_toEndOf="@+id/week3CL"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -380,7 +404,7 @@
                         android:paddingBottom="8dp"
                         android:paddingEnd="15dp"
                         android:paddingStart="15dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="5dp"
                         app:layout_constraintStart_toEndOf="@+id/week4CL"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -409,6 +433,38 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/green"
+                app:layout_constraintTop_toBottomOf="@+id/hv" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/bottomCV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="3dp"
+                app:cardCornerRadius="3dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hv">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/expertChatRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="15dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_expert_chat" />
+
+            </androidx.cardview.widget.CardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

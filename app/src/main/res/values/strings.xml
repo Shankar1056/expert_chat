@@ -19,6 +19,26 @@
     <string name="title_month">Month</string>
     <string name="title_year">Year</string>
     <string name="title_go">Go</string>
-    <string name="title_expert_chat_calendar">The Expert Chat Calendar - OCTOBER</string>
+    <string name="title_expert_chat_calendar">The Expert Chat Calendar - </string>
     <string name="title_week1">Week1</string>
+    <string name="title_join_chat">Join Chat</string>
+    <string name="title_view_details">View Details</string>
+    <string name="now">now!</string>
+
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
 </resources>
