@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.jobsforher.expert_chat.ExpertChatViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/expert_chat_banner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/about_chat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/color_grey"
+                android:fontFamily="@font/opensanssemibold"
+                android:padding="15dp"
+                android:text="@string/about_expert_chat"
+                android:textColor="@color/text_black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banner" />
+
+            <ImageView
+                android:id="@+id/group_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/icon_join_group"
+                app:layout_constraintStart_toStartOf="@+id/about_chat"
+                app:layout_constraintTop_toBottomOf="@+id/about_chat" />
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/opensansbold"
+                android:text="@string/about_expert_group_heading"
+                android:textColor="@color/text_black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/group_icon"
+                app:layout_constraintTop_toTopOf="@+id/group_icon" />
+
+            <TextView
+                android:id="@+id/heading1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/opensansregular"
+                android:text="@string/about_expert_group_heading1"
+                android:textColor="@color/text_black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/group_icon"
+                app:layout_constraintTop_toBottomOf="@+id/heading" />
+
+            <TextView
+                android:id="@+id/expert_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:text="@string/about_expert_group_expert_chat"
+                android:textAllCaps="true"
+                android:textColor="@color/color_light_blue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@+id/group_icon"
+                app:layout_constraintTop_toBottomOf="@+id/heading1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/topCV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="3dp"
+                app:cardCornerRadius="3dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/group_icon"
+                app:layout_constraintTop_toBottomOf="@+id/expert_chat">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/month_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensansregular"
+                        android:text="@string/title_select_month_year"
+                        android:textColor="@color/companies_textcolor"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/month"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:gravity="start"
+                        android:text="@string/title_month"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/year"
+                        app:layout_constraintStart_toStartOf="@+id/month_year"
+                        app:layout_constraintTop_toBottomOf="@+id/month_year" />
+
+                    <TextView
+                        android:id="@+id/year"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="@string/title_year"
+                        android:textColor="@color/text_black"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/buttonGo"
+                        app:layout_constraintStart_toEndOf="@+id/month"
+                        app:layout_constraintTop_toBottomOf="@+id/month_year" />
+
+                    <TextView
+                        android:id="@+id/selectMonth"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:drawablePadding="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/month"
+                        app:layout_constraintStart_toStartOf="@+id/month"
+                        app:layout_constraintTop_toBottomOf="@+id/month" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:background="@color/text_black"
+                        app:layout_constraintEnd_toEndOf="@+id/selectMonth"
+                        app:layout_constraintStart_toStartOf="@+id/selectMonth"
+                        app:layout_constraintTop_toBottomOf="@+id/selectMonth" />
+
+                    <TextView
+                        android:id="@+id/selectYear"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:drawablePadding="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/year"
+                        app:layout_constraintStart_toStartOf="@+id/year"
+                        app:layout_constraintTop_toBottomOf="@+id/year" />
+
+                    <View
+                        android:id="@+id/yearView"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:background="@color/text_black"
+                        app:layout_constraintEnd_toEndOf="@+id/selectYear"
+                        app:layout_constraintStart_toStartOf="@+id/selectYear"
+                        app:layout_constraintTop_toBottomOf="@+id/selectYear" />
+
+                    <Button
+                        android:id="@+id/buttonGo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/curved_green"
+                        android:text="@string/title_go"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/yearView"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/monthName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:text="@{@string/title_expert_chat_calendar + viewmodel.selectedMonth }"
+                android:textColor="@color/text_black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/topCV"
+                app:layout_constraintTop_toBottomOf="@+id/topCV" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/monthName"
+                app:layout_constraintTop_toBottomOf="@+id/monthName">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/week1CL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/top_curved_black"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/week1TV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@string/title_week1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/week1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@{viewmodel.selected1Week}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toBottomOf="@+id/week1TV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/week2CL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/top_curved_black"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/week1CL">
+
+                        <TextView
+                            android:id="@+id/week2TV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@string/title_week1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@{viewmodel.selected2Week}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toBottomOf="@+id/week2TV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/week3CL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/top_curved_black"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/week2CL">
+
+                        <TextView
+                            android:id="@+id/week3TV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@string/title_week1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@{viewmodel.selected3Week}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toBottomOf="@+id/week3TV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/week4CL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/top_curved_black"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintStart_toEndOf="@+id/week3CL"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/week4TV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@string/title_week1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@{viewmodel.selected4Week}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toBottomOf="@+id/week4TV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/week5CL"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/top_curved_black"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="8dp"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintStart_toEndOf="@+id/week4CL"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/week5TV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@string/title_week1"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/opensansregular"
+                            android:gravity="center"
+                            android:text="@{viewmodel.selected5Week}"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toBottomOf="@+id/week5TV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
